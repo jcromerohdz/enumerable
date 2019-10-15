@@ -45,3 +45,44 @@ arr = ["Christian", "Victoria", "Scalett", "Daniel", "Willard"]
 arr.my_none? do |name|
   puts name.match(/zzz/) #returns true for the given set
 end
+
+puts "---------"
+puts "my_count"
+arr = [1, 2, 3, 4, 5, 6, 7, 87, 33, 3]
+run1 = arr.my_count do |val|
+  val < 20 #returns 8 for the given set
+end
+
+puts "---------"
+puts "my_map"
+arr = [1, 4, 16, 25, 36, 49]
+run1 = arr.my_map do |val|
+  val * 2 #doubles each value
+end
+
+run2 = arr.my_map
+
+puts run1
+puts run2
+
+puts "---------"
+puts "my_inject"
+puts "calling multiply_els"
+
+def multiply_els(arr)
+  arr.my_inject(:*)
+end
+
+puts multiply_els([2, 4, 5])
+puts "---------"
+puts "startVal with symbol"
+a = [2, 4, 5].my_inject(5, :*)
+puts a
+puts "---------"
+puts "only block"
+a = [5, 6, 7, 8, 9, 10].my_inject { |i, j| i + j }
+puts a
+puts "---------"
+puts "startVal with block"
+a = [5, 6, 7, 8, 9, 10].my_inject(5) { |i, j| i + j }
+puts a
