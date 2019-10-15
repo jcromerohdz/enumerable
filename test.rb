@@ -24,3 +24,24 @@ arr.my_select do |num|
     puts num
   end
 end
+
+puts "---------"
+puts "my_all"
+arr = ["Miranda", "Monica", "Mirna", "Michell"]
+arr.my_all? do |name|
+  name[0] == "M" #returns true for the given set
+end
+
+puts "---------"
+puts "my_any"
+arr = ["Christian", "Victoria", "Scalett", "Daniel", "Willard"]
+arr.my_any? do |name|
+  name.match(/Vi/) #returns true for the given set
+end
+
+puts "---------"
+puts "my_none"
+arr = ["Christian", "Victoria", "Scalett", "Daniel", "Willard"]
+arr.my_none? do |name|
+  puts name.match(/zzz/) #returns true for the given set
+end

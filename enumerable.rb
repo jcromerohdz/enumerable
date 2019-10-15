@@ -31,4 +31,54 @@ module Enumerable
       raise "You didn't send a block in"
     end
   end
+
+  def my_all?
+    if block_given?
+      result = true
+      for i in 0..self.length - 1
+        if (yield(self[i]))
+          next
+        else
+          result = false
+        end
+      end
+    else
+      "You didn't send a block in"
+    end
+
+    puts result
+  end
+
+  def my_any?
+    if block_given?
+      result = false
+      for i in 0..self.length - 1
+        if (yield(self[i]))
+          result = true
+        else
+          next
+        end
+      end
+    else
+      raise "You didn't send a block in"
+    end
+    puts result
+  end
+
+  def my_none?
+    if block_given?
+      result = true
+      for i in 0..self.length - 1
+        if (yield(self[i]))
+          result = false
+        else
+          next
+        end
+      end
+    else
+      "You didn't send a block in"
+    end
+
+    puts result
+  end
 end
