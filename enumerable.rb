@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Enumerable
   # def my_each
   #   if block_given?
@@ -10,8 +11,9 @@ module Enumerable
   #   end
   # end
   def my_each
-    self.length.times do |index|
-      item = self[index]
+    t = self
+    t.length.times do |i|
+      item = t[i]
       yield(item)
     end
   end
