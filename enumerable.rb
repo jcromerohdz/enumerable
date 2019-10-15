@@ -1,11 +1,18 @@
+# frozen_string_literal: true
 module Enumerable
+  # def my_each
+  #   if block_given?
+  #     for i in 0..self.length - 1
+  #       yield(self[i])
+  #     end
+  #   else
+  #     raise "You didn't send a block in"
+  #   end
+  # end
   def my_each
-    if block_given?
-      for i in 0..self.length - 1
-        yield(self[i])
-      end
-    else
-      raise "You didn't send a block in"
+    self.length.times do |index|
+      item = self[index]
+      yield(item)
     end
   end
 
