@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
-require "./enumerable"
+require './enumerable'
 
-puts %w[h i hi hello].each { |element| puts element }
+puts %w[h i hi hello].each do
+  |element|
+  puts element 
+end
 puts %w[h i hi hello].my_each { |element| puts element }
 
 puts %w[h i hi hello].each_with_index { |element, index| puts element + index.to_s }
