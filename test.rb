@@ -9,16 +9,16 @@ puts %w[h i hi hello].my_each { |element| puts element }
 puts %w[h i hi hello].each_with_index { |element, index| puts element + index.to_s }
 puts %w[h i hi hello].my_each_with_index { |element, index| puts element + index.to_s }
 
-puts %w[h i hi hello].select { |element| element[0] == "h" }
-puts %w[h i hi hello].my_select { |element| element[0] == "h" }
+puts %w[h i hi hello].select { |element| element[0] == 'h' }
+puts %w[h i hi hello].my_select { |element| element[0] == 'h' }
 
 puts %w[h i hi hello].all? { |element| element.is_a? String }
 puts %w[h i hi hello].my_all? { |element| element.is_a? String }
 
-puts [3, 3, 3, "hello"].any? { |element| element.is_a? String }
+puts [3, 3, 3, 'hello'].any? { |element| element.is_a? String }
 puts [3, 3, 3, 3].my_any? { |element| element.is_a? String }
 
-puts ([3, 3, 3, "hello"]).none? { |element| element.is_a? String }
+puts ([3, 3, 3, 'hello']).none? { |element| element.is_a? String }
 puts [3, 3, 3, 3].my_none? { |element| element.is_a? String }
 
 puts [3, 3, 3, 3].count
