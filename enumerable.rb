@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Enumerable
+module Enumerable # rubocop:disable Metrics/ModuleLength
   # def my_each
   #   if block_given?
   #     for i in 0..self.length - 1
