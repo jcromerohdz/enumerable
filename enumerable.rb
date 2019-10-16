@@ -93,8 +93,8 @@ module Enumerable # rubocop:disable Metrics/ModuleLength
 
     arr = []
     my_each do |i|
-      arr << if !arg.nil?
-        arg.call(i)
+      if !arg.nil?
+        arr << arg.call(i)
       else
         yield(i)
       end
@@ -117,11 +117,11 @@ module Enumerable # rubocop:disable Metrics/ModuleLength
     end
 
     arr[0..-1].my_each do |i|
-      operand = if symbol
-                  operand.send(symbol, i)
-                else
-                  yield(operand, i)
-                end
+      if symbol
+        operand = operand.send(symbol, i)
+      else
+        yield(operand, i)
+      end
     end
     operand
   end
