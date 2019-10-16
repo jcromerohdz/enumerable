@@ -37,13 +37,4 @@ end
 
 puts multiply_els([2, 4, 5])
 # rubocop:enable  Metrics/SymbolProc
-
-my_proc = Proc.new do |element|
-  element.upcase
-end
-puts %w[h i hi hello].map(&my_proc)
-puts %w[h i hi hello].my_map my_proc
-puts %w[h i hi hello].my_map { |element| element.capitalize }
-puts %w[h i hi hello].my_map(my_proc) { |element| element.capitalize }
-
 # rubocop:enable  Metrics/AmbiguousBlockAssociation
