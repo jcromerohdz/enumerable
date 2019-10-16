@@ -2,88 +2,43 @@
 require "./enumerable"
 include Enumerable
 
-puts "---------"
-puts "my_each"
-arr = [1, 2, 3, 4, 5, 6]
-arr.my_each do |num|
-  puts num + 2 #prints out add 2 to the element
-end
+puts ["h", "i", "hi", "hello"].each { |element| puts element }
+puts ["h", "i", "hi", "hello"].my_each { |element| puts element }
 
-puts "---------"
-puts "my_each_with_index"
-arr = ["John", "Christian", "Flover", "Gerald"]
-arr.my_each_with_index do |name, inx_val|
-  puts "String: #{name}, Index: #{inx_val}"
-  #prints out each element with index
-end
+puts ["h", "i", "hi", "hello"].each_with_index { |element, index| puts element + index.to_s }
+puts ["h", "i", "hi", "hello"].my_each_with_index { |element, index| puts element + index.to_s }
 
-puts "---------"
-puts "my_select"
-arr = [2.2, 3.4, 5.5, 2.9, 2.2]
-arr.my_select do |num|
-  if num.to_f > 3.3 #selects arr[1], arr[2]
-    puts num
-  end
-end
+puts ["h", "i", "hi", "hello"].select { |element| element[0] == "h" }
+puts ["h", "i", "hi", "hello"].my_select { |element| element[0] == "h" }
 
-puts "---------"
-puts "my_all"
-arr = ["Miranda", "Monica", "Mirna", "Michell"]
-arr.my_all? do |name|
-  name[0] == "M" #returns true for the given set
-end
+puts ["h", "i", "hi", "hello"].all? { |element| element.is_a? String }
+puts ["h", "i", "hi", "hello"].my_all? { |element| element.is_a? String }
 
-puts "---------"
-puts "my_any"
-arr = ["Christian", "Victoria", "Scalett", "Daniel", "Willard"]
-arr.my_any? do |name|
-  name.match(/Vi/) #returns true for the given set
-end
+puts [3, 3, 3, "hello"].any? { |element| element.is_a? String }
+puts [3, 3, 3, 3].my_any? { |element| element.is_a? String }
 
-puts "---------"
-puts "my_none"
-arr = ["Christian", "Victoria", "Scalett", "Daniel", "Willard"]
-arr.my_none? do |name|
-  puts name.match(/zzz/) #returns true for the given set
-end
+puts [3, 3, 3, "hello"].none? { |element| element.is_a? String }
+puts [3, 3, 3, 3].my_none? { |element| element.is_a? String }
 
-puts "---------"
-puts "my_count"
-arr = [1, 2, 3, 4, 5, 6, 7, 87, 33, 3]
-run1 = arr.my_count do |val|
-  val < 20 #returns 8 for the given set
-end
+puts [3, 3, 3, 3].count
+puts [3, 3, 3, 3].my_count
 
-puts "---------"
-puts "my_map"
-arr = [1, 4, 16, 25, 36, 49]
-run1 = arr.my_map do |val|
-  val * 2 #doubles each value
-end
+puts ["h", "i", "hi", "hello"].map { |element| element.upcase }
+puts ["h", "i", "hi", "hello"].my_map { |element| element.upcase }
 
-run2 = arr.my_map
+puts [1, 2, 3, 4].inject(0) { |result, element| result + element }
+puts [1, 2, 3, 4].my_inject(0) { |result, element| result + element }
 
-puts run1
-puts run2
-
-puts "---------"
-puts "my_inject"
-puts "calling multiply_els"
-
-def multiply_els(arr)
-  arr.my_inject(:*)
+def multiply_els(array)
+  array.my_inject(1) { |total, element| total * element }
 end
 
 puts multiply_els([2, 4, 5])
-puts "---------"
-puts "startVal with symbol"
-a = [2, 4, 5].my_inject(5, :*)
-puts a
-puts "---------"
-puts "only block"
-a = [5, 6, 7, 8, 9, 10].my_inject { |i, j| i + j }
-puts a
-puts "---------"
-puts "startVal with block"
-a = [5, 6, 7, 8, 9, 10].my_inject(5) { |i, j| i + j }
-puts a
+
+my_proc = Proc.new do |element|
+  element.upcase
+end
+puts ["h", "i", "hi", "hello"].map(&my_proc)
+puts ["h", "i", "hi", "hello"].my_map my_proc
+puts ["h", "i", "hi", "hello"].my_map { |element| element.capitalize }
+puts ["h", "i", "hi", "hello"].my_map(my_proc) { |element| element.capitalize }
