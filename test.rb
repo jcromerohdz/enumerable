@@ -18,12 +18,13 @@ puts %w[h i hi hello].my_all? { |element| element.is_a? String }
 puts [3, 3, 3, 'hello'].any? { |element| element.is_a? String }
 puts [3, 3, 3, 3].my_any? { |element| element.is_a? String }
 
-puts ([3, 3, 3, 'hello']).none? { |element| element.is_a? String }
+puts [3, 3, 3, 'hello'].none? { |element| element.is_a? String }
 puts [3, 3, 3, 3].my_none? { |element| element.is_a? String }
 
 puts [3, 3, 3, 3].count
 puts [3, 3, 3, 3].my_count
 
+# rubocop:disable  Metrics/SymbolProc
 puts %w[h i hi hello].map { |element| element.upcase }
 puts %w[h i hi hello].my_map { |element| element.upcase }
 
@@ -43,3 +44,6 @@ puts %w[h i hi hello].map(&my_proc)
 puts %w[h i hi hello].my_map my_proc
 puts %w[h i hi hello].my_map { |element| element.capitalize }
 puts %w[h i hi hello].my_map(my_proc) { |element| element.capitalize }
+
+# rubocop:enable  Metrics/AmbiguousBlockAssociation
+# rubocop:enable  Metrics/SymbolProc
