@@ -126,3 +126,5 @@ module Enumerable # rubocop:disable Metrics/ModuleLength
     operand
   end
 end
+
+# rubocop:enable  Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
